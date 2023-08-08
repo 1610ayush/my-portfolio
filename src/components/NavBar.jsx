@@ -1,9 +1,28 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 
 const NavBar = () => {
+  const [scrollY, setScrollY] = useState(0);
+    const [visible, setVisible] = useState(true);
+
+    const handleScroll = () => {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY > scrollY) {
+            setVisible(false); // hide navbar if scrolling down
+        } else {
+            setVisible(true); // show navbar if scrolling up
+        }
+
+        setScrollY(currentScrollY);
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [scrollY]);
     return (
-        <StyledNav>
+        <StyledNav visible={visible}>
           <h1>
             <a href="#" id="logo" className="text-2xl font-bold">Ayush Ranjan</a>
           </h1>
@@ -63,6 +82,8 @@ const NavBar = () => {
       flex-direction: column;
       align-items: center; // Center items horizontally for mobile
       padding: 2rem 1rem;
+      transform: translateY(${props => (props.visible ? '0' : '-100%')});
+      transition: transform 0.3s ease-in-out;
       
       #logo {
         margin: 1rem 0; // Adjusted margin for better spacing
