@@ -9,7 +9,7 @@ const Achievement = () => {
     ];
 
     return (
-        <section id="achievements" className="h-screen bg-#1b1b1b text-white py-16 flex items-center"> {/* Added 'flex' and 'items-center' */}
+        <section id="achievements" className="h-screen bg-#1b1b1b text-white py-16 flex items-center">
             <div className="container mx-auto text-center">
                 <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}>
                     <h2 className="text-4xl font-bold mb-12 text-white">Achievements</h2>

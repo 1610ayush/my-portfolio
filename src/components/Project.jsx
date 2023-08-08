@@ -77,26 +77,26 @@ const Project = () => {
     ];
 
     return (
-        <section id="projects" className="h-auto bg-#1b1b1b text-white py-16 flex items-center">
-            <div className="container mx-auto text-center py-12">
+        <section id="projects" className="h-auto bg-#1b1b1b text-white py-8 md:py-16 flex items-center">
+            <div className="container mx-auto text-center py-8">
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-                    <h2 className="text-3xl font-bold mb-8">Projects</h2>
+                    <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8">Projects</h2>
                 </motion.div>
                 <div className="flex justify-center">
-                    <div className="grid grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 w-full md:w-4/5 mx-auto">
                         {projectList.map((project, index) => (
                             <motion.div 
                                 key={project.title}
                                 className="card relative"
-                                style={{ height: '300px', width: '300px' }}
+                                style={{ height: '200px', width: '100%' }}
                                 initial={{ y: 30, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
-                                transition={{ delay: 0.6 + index * 0.1 }}
+                                transition={{ delay: 0.6 + index * 0.05 }}
                             >
                                 <img src={project.imageUrl} alt={project.title} className="rounded-t-lg h-full w-full object-cover"/>
-                                <div className="p-4 absolute bottom-0 w-full bg-black bg-opacity-70">
-                                    <h3 className="text-2xl mb-4">{project.title}</h3>
-                                    <div className="flex justify-center space-x-4">
+                                <div className="p-2 md:p-4 absolute bottom-0 w-full bg-black bg-opacity-70 text-xs md:text-base">
+                                    <h3 className="text-xl mb-2 md:mb-4">{project.title}</h3>
+                                    <div className="flex justify-center space-x-2 md:space-x-4">
                                         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">GitHub</a>
                                         <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">Live</a>
                                     </div>
